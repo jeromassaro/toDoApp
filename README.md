@@ -60,6 +60,5 @@ Aplicacion full backend de una app ToDo
 | :-------- | :------- | :-------------------------------- |
 | `status`      | `string` |**Required**. status task (open , in_progress, completed) |
 
-#### Post item
 
 
