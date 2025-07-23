@@ -1,4 +1,4 @@
-package tasks.toDoApp.model;
+package tasks.toDoApp.dto;
 
 public class StatusDTO {
 

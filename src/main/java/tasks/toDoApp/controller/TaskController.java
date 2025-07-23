@@ -2,9 +2,9 @@ package tasks.toDoApp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tasks.toDoApp.model.StatusDTO;
+import tasks.toDoApp.dto.StatusDTO;
 import tasks.toDoApp.model.Task;
-import tasks.toDoApp.model.TaskCreationDTO;
+import tasks.toDoApp.dto.TaskCreationDTO;
 import tasks.toDoApp.model.TaskStatus;
 import tasks.toDoApp.service.TaskService;
 
@@ -18,32 +18,32 @@ public class TaskController {
     private TaskService taskService;
 
     @GetMapping
-    public List<Task> obtenerTareas (){
-        return taskService.listarTareas();
+    public List<Task> getAllTasks (){
+        return taskService.getAllTasks();
     }
 
     @GetMapping("/{id}")
-    public Task obtenerTareaPorId(Long id){
-        return taskService.obtenerTareaPorId(id);
+    public Task getTaskById(Long id){
+        return taskService.getTaskById(id);
     }
 
     @PutMapping
-    public Task crearTarea(@RequestBody TaskCreationDTO task){
-        return taskService.crearTarea(task);
+    public Task createTask(@RequestBody TaskCreationDTO task){
+        return taskService.createTask(task);
     }
 
     @PostMapping("/{id}")
-    public Task actualizarTarea(@PathVariable Long id, @RequestBody TaskCreationDTO task){
-        return taskService.actualizarTarea(id,task);
+    public Task updateTask(@PathVariable Long id, @RequestBody TaskCreationDTO task){
+        return taskService.updateTask(id,task);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminarTarea(@PathVariable Long id){
-        taskService.eliminarTarea(id);
+    public void deleteTask(@PathVariable Long id){
+        taskService.deleteTask(id);
     }
 
     @PatchMapping("/{id}")
-    public void completarTarea(@PathVariable Long id){
+    public void markTaskAsCompleted(@PathVariable Long id){
         taskService.markAsCompleted(id);
     }
 
@@ -53,8 +53,8 @@ public class TaskController {
         taskService.updateStatus(id,status);
     }
 
-    @GetMapping("/status/{status}")
-    public List<Task> obtenerTareasPorStatus(@PathVariable TaskStatus status){
-        return taskService.obtenerTareasPorStatus(status);
+    @GetMapping("?status=COMPLETED")
+    public List<Task> getTaskByStatus(@PathVariable TaskStatus status){
+        return taskService.getTasksByStatus(status);
     }
 }
