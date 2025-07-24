@@ -1,6 +1,9 @@
 package tasks.toDoApp.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tasks.toDoApp.dto.StatusDTO;
 import tasks.toDoApp.model.Task;
@@ -23,34 +26,40 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
-    public Task getTaskById(Long id){
-        return taskService.getTaskById(id);
+    public ResponseEntity<Task> getTaskById(Long id){
+        Task task = taskService.getTaskById(id);
+        if (task == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(task,HttpStatus.OK);
     }
 
     @PutMapping
-    public Task createTask(@RequestBody TaskCreationDTO task){
-        return taskService.createTask(task);
+    public ResponseEntity<Task> createTask(@RequestBody TaskCreationDTO task){
+        return new ResponseEntity<>(taskService.createTask(task), HttpStatus.CREATED);
     }
 
     @PostMapping("/{id}")
-    public Task updateTask(@PathVariable Long id, @RequestBody TaskCreationDTO task){
-        return taskService.updateTask(id,task);
+    public ResponseEntity<Task> updateTask(@PathVariable Long id, @Valid @RequestBody TaskCreationDTO task){
+        return new ResponseEntity(taskService.updateTask(id,task),HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTask(@PathVariable Long id){
+    public ResponseEntity<Void> deleteTask(@PathVariable Long id){
         taskService.deleteTask(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PatchMapping("/{id}")
-    public void markTaskAsCompleted(@PathVariable Long id){
-        taskService.markAsCompleted(id);
+    public ResponseEntity<Void> markTaskAsCompleted(@PathVariable Long id){
+        Task task = taskService.markAsCompleted(id);
+        if (task == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PatchMapping("/{id}/status")
-    public void updateStatus(@PathVariable Long id, @RequestBody StatusDTO dto){
+    public ResponseEntity<Void> updateStatus(@PathVariable Long id, @RequestBody StatusDTO dto){
         TaskStatus status = TaskStatus.valueOf(dto.getStatus().toUpperCase());
         taskService.updateStatus(id,status);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("?status=COMPLETED")

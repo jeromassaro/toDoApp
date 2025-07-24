@@ -36,7 +36,8 @@ public class TaskService implements ITaskService{
     @Transactional
     @Override
     public Task updateTask(Long id, TaskCreationDTO taskDTO) {
-        Task task = new Task();
+        Task task = taskRepository.findById(id).orElse(null);
+        if (task == null) return null;
         task.setName(taskDTO.getName());
         task.setDescription(taskDTO.getDescription());
         task.setStatus(taskDTO.getStatus());
@@ -72,6 +73,7 @@ public class TaskService implements ITaskService{
     @Override
     public Task markAsCompleted(Long id){
         Task task = taskRepository.findById(id).orElse(null);
+        if (task == null) return null;
         task.setCompleted(true);
         return taskRepository.save(task);
     }
