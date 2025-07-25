@@ -12,6 +12,7 @@ import java.util.List;
 @Setter
 @Getter
 @ToString
+@Table (name = "user")
 public class User {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
