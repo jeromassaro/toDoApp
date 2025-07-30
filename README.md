@@ -9,6 +9,7 @@ El servidor proporciona una API para interactuar con la base de datos y manejar 
 - SpringBoot
 - SpringData
 - ApiREST
+- MySQL
 
 ## API Reference
 
