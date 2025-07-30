@@ -1,8 +1,14 @@
 # ToDoApp
 
-Aplicacion full backend de manejo de tareas con DTO, Servicio para actualizar una base de datos SQL conectandose con hibernate, Controlador para administrar los datos a traves de una API.
+Repositorio que contiene una aplicacion backend de manejo de tareas. 
+El servidor proporciona una API para interactuar con la base de datos y manejar las operaciones CRUD para las tareas.
 
+## Tecnologias Utilizadas
 
+- Java
+- SpringBoot
+- SpringData
+- ApiREST
 
 ## API Reference
 
