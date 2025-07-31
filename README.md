@@ -10,6 +10,8 @@ El servidor proporciona una API para interactuar con la base de datos y manejar 
 - SpringData
 - ApiREST
 - MySQL
+- Hibernate
+- Lombok
 
 ## API Reference
 
