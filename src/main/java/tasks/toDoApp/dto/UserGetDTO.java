@@ -6,16 +6,16 @@ import java.util.List;
 
 public class UserGetDTO {
 
-    private String username;
+    private String email;
 
     private List<Task> taskList;
 
     public String getUsername() {
-        return username;
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String email) {
+        this.email = email;
     }
 
     public List<Task> getTaskList() {

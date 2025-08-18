@@ -32,12 +32,12 @@ public class TaskController {
         return new ResponseEntity<>(task,HttpStatus.OK);
     }
 
-    @PutMapping
+    @PostMapping
     public ResponseEntity<Task> createTask(@RequestBody TaskCreationDTO task){
         return new ResponseEntity<>(taskService.createTask(task), HttpStatus.CREATED);
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @Valid @RequestBody TaskCreationDTO task){
         return new ResponseEntity(taskService.updateTask(id,task),HttpStatus.OK);
     }

@@ -29,7 +29,6 @@ public class TaskService implements ITaskService{
         task.setName(taskDTO.getName());
         task.setDescription(taskDTO.getDescription());
         task.setStatus(taskDTO.getStatus());
-        task.setCompleted(taskDTO.isCompleted());
         return taskRepository.save(task);
     }
 
@@ -41,7 +40,6 @@ public class TaskService implements ITaskService{
         task.setName(taskDTO.getName());
         task.setDescription(taskDTO.getDescription());
         task.setStatus(taskDTO.getStatus());
-        task.setCompleted(taskDTO.isCompleted());
         return taskRepository.save(task);
     }
 
@@ -74,7 +72,6 @@ public class TaskService implements ITaskService{
     public Task markAsCompleted(Long id){
         Task task = taskRepository.findById(id).orElse(null);
         if (task == null) return null;
-        task.setCompleted(true);
         return taskRepository.save(task);
     }
 }

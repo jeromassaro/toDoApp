@@ -10,7 +10,6 @@ public class TaskCreationDTO {
     @NotBlank(message = "La descripcion no puede estar vacia")
     private String description;
     private TaskStatus status;
-    private boolean completed;
 
     public String getName() {
         return name;
@@ -26,14 +25,6 @@ public class TaskCreationDTO {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
     }
 
     public TaskStatus getStatus() {

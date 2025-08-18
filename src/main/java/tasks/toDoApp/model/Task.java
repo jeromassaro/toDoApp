@@ -22,7 +22,6 @@ public class Task {
     private String description;
     private LocalDateTime createdDate;
     private LocalDateTime lastModifiedDate;
-    private boolean completed;
     private TaskStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)

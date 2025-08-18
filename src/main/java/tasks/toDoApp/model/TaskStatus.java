@@ -1,7 +1,7 @@
 package tasks.toDoApp.model;
 
 public enum TaskStatus {
-    OPEN,
-    IN_PROGRESS,
-    COMPLETED;
+    En_ESPERA,
+    EN_PROCESO,
+    FINALIZADA;
 }

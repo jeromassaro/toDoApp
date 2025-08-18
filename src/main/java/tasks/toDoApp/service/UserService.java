@@ -27,14 +27,10 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public Optional<User> getUserByUsername(String username) {
-        return userRepository.findByUsername(username);
-    }
-
-    @Override
     public User createUser(UserCreationDTO userDTO) {
         User user = new User();
-        user.setUsername(userDTO.getUsername());
+        user.setName(userDTO.getName());
+        user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
         user.setRole(UserRole.USER);
         return userRepository.save(user);
@@ -44,7 +40,7 @@ public class UserService implements IUserService{
     public User updateUser(Long id, UserCreationDTO userDTO) {
         User user = userRepository.findById(id).orElse(null);
         if (user == null) return null;
-        user.setUsername(userDTO.getUsername());
+        user.setName(userDTO.getName());
         user.setPassword(userDTO.getPassword());
         user.setRole(UserRole.USER);
         return userRepository.save(user);
@@ -69,5 +65,9 @@ public class UserService implements IUserService{
         if (user == null) return null;
         user.setRole(UserRole.valueOf(role));
         return userRepository.save(user);
+    }
+
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 }

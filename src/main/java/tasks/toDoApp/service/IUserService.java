@@ -12,7 +12,7 @@ public interface IUserService {
 
     public List<User> getUsers();
     public Optional<User> getUserById(Long id);
-    public Optional<User> getUserByUsername(String username);
+    public User getUserByEmail(String username);
     public User createUser(UserCreationDTO userDTO);
     public User updateUser(Long id, UserCreationDTO userDTO);
     public void deleteUser(Long id);
