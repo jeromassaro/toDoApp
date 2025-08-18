@@ -1,13 +1,10 @@
 package tasks.toDoApp.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import tasks.toDoApp.model.TaskStatus;
 
 public class TaskCreationDTO {
 
-    @NotBlank(message = "El nombre no puede estar vacio")
     private String name;
-    @NotBlank(message = "La descripcion no puede estar vacia")
     private String description;
     private TaskStatus status;
 

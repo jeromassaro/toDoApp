@@ -1,6 +1,5 @@
 package tasks.toDoApp.controller;
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +37,7 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long id, @Valid @RequestBody TaskCreationDTO task){
+    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody TaskCreationDTO task){
         return new ResponseEntity(taskService.updateTask(id,task),HttpStatus.OK);
     }
 

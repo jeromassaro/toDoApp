@@ -22,6 +22,6 @@ public class User {
     private String email;
     private String password;
     private UserRole role;
-    @OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Task> taskList;
 }

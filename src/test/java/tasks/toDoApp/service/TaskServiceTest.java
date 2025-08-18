@@ -40,28 +40,25 @@ public class TaskServiceTest {
         task1.setId(1L);
         task1.setName("Task 1");
         task1.setDescription("Description 1");
-        task1.setCompleted(false);
-        task1.setStatus(IN_PROGRESS);
+        task1.setStatus(EN_PROCESO);
 
 
         task2 = new Task();
         task2.setId(2L);
         task2.setName("Task 2");
         task2.setDescription("Description 2");
-        task2.setCompleted(true);
-        task2.setStatus(OPEN);
+        task2.setStatus(En_ESPERA);
 
         task3 = new Task();
         task3.setId(3L);
         task3.setName("Task 3");
         task3.setDescription("Description 3");
-        task3.setCompleted(true);
-        task3.setStatus(OPEN);
+        task3.setStatus(En_ESPERA);
 
         taskDTO = new TaskCreationDTO();
         taskDTO.setName("Task DTO");
         taskDTO.setDescription("Description DTO");
-        taskDTO.setStatus(COMPLETED);
+        taskDTO.setStatus(FINALIZADA);
 
     }
 
@@ -87,7 +84,7 @@ public class TaskServiceTest {
         assertEquals(1,created.getId());
         assertEquals("Task 1",created.getName());
         assertEquals("Description 1",created.getDescription());
-        assertEquals(IN_PROGRESS,created.getStatus());
+        assertEquals(EN_PROCESO,created.getStatus());
     }
 
     @Test
@@ -102,7 +99,7 @@ public class TaskServiceTest {
         assertEquals(1,taskUpdated.getId().intValue());
         assertEquals("Task DTO",taskUpdated.getName());
         assertEquals("Description DTO",taskUpdated.getDescription());
-        assertEquals(COMPLETED,taskUpdated.getStatus());
+        assertEquals(FINALIZADA,taskUpdated.getStatus());
     }
 
     @Test
@@ -126,8 +123,8 @@ public class TaskServiceTest {
 
     @Test
     void getTasksByStatus() {
-        when(taskRepository.findAllByStatus(OPEN)).thenReturn(Arrays.asList(task2,task3));
-        List<Task> tasks = taskRepository.findAllByStatus(OPEN);
+        when(taskRepository.findAllByStatus(En_ESPERA)).thenReturn(Arrays.asList(task2,task3));
+        List<Task> tasks = taskRepository.findAllByStatus(En_ESPERA);
         assertNotNull(tasks);
         assertEquals(2,tasks.size());
         assertEquals(2,tasks.get(0).getId().intValue());
